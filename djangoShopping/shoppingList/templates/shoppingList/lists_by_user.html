@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{%  load bootstrap5 %}
+{% load tz %}
+
+{% block content %}
+<div class="container">
+{#    {% debug %}#}
+    {% if shoppinglist_list.count  == 0 %}
+   <h1><span class="username">{{user.username}}</span>, it seems you haven't created any list so far...</h1>
+        <h2>Make shopping easy by creating one!</h2>
+
+    {% else %}
+   <h1><span class="username">{{user.username}}</span>, you have created <span class="badge postcountbadge" >{{ shoppinglist_list.count }}</span> list{{ shoppinglist_list.count|pluralize }}:</h1>
+
+
+    <div class="row">
+        {% for item in shoppinglist_list %}
+        <div class="col-auto mb-3">
+            <div class="card" style="width: 21rem; height: 15rem;">
+                <div class="card-body" style="position:relative;">
+                    <h5 class="card-title">{{item.title|truncatechars:25}}</h5>
+                    <hr style="border-top: 1px solid white;">
+                    <h6 class="card-subtitle mb-2 text-muted" style="text-align: right">{{ item.created_date|timezone:"Europe/Paris"|date:'H:i d.m.y' }}</h6>
+                    <p class="card-text">{{ item.products.all|join:", "|truncatechars:90}}</p>
+
+                    <div class="buttons-flex" >
+                        <a href="{% url 'shoplists:details' username=item.author.username pk=item.pk %}">
+                        <div class="listbutton"><button class="btn btn-primary"><i class="fa-solid fa-eye fa-1.5"></i> View </button> </div> </a>
+
+                        <a href="{%  url 'shoplists:listedit' pk=item.pk %}">
+                        <div class="listbutton"><button class="btn btn-danger" style="background-color: #f39c12"><i class="fa-solid fa-edit fa-1.5"></i> Edit </button> </div> </a>
+
+                        <a href="{%  url 'shoplists:listdelete' pk=item.pk %}">
+                       <div class="listbutton"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash fa-1.5"></i> Delete </button> </div>
+                    </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        {%  endfor %}
+    </div>
+
+
+    {%  endif %}
+</div>
+
+{%  endblock %}

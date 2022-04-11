@@ -1,0 +1,57 @@
+  .listbutton{
+      text-align: center;
+  }
+  .listbutton button{
+      width: 90px;
+      font-size: 0.8em;
+  }
+
+.buttons-flex {
+
+ display: -webkit-flex;
+ display: flex;
+ -webkit-justify-content: space-between;
+ justify-content: space-between;
+}
+
+ .card{
+     background-color:#14213d;
+     margin-top:20px;
+     padding:5px;
+
+
+     width: 100%;
+     color:white;
+     border-radius:10px;
+ }
+
+ .card-text{
+     height: 4rem;
+ }
+
+ .postcountbadge{
+     border-radius: 10px;
+     font-size: 0.8em;
+     background-color: #f39c12;
+ }
+  .productsinfo{
+    border: 1px solid black;
+     margin-top:20px;
+    padding: 10px;
+     color:black;
+
+      display: flex;
+    justify-content: left;
+    align-items: self-start;
+    overflow: hidden;
+      border-bottom-right-radius:10px;
+     border-top-right-radius:10px;
+ }
+
+  .singleproduct{
+      background-color:transparent; border:none; margin-left:10px; padding-top:0
+  }
+  .productcheckbox{
+      color:#14213d;
+      size: 2em;
+  }

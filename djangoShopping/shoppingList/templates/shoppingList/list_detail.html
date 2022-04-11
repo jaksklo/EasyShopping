@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{%  load bootstrap5 %}
+{% load static %}
+{% load tz %}
+
+
+{% block content %}
+    {%  debug %}
+    <h1 id="test">Shopping list details</h1>
+    <div class="row">
+        <div class="col-md-4 userinfocol">
+            <div id="userinfo">
+                    <h4><span class="username">{{ shoppinglist.title }}</span></h4>
+                <hr style="border-top: 1px solid white;">
+                    <p id="line"><strong>Author: </strong> {{ shoppinglist.author }}</p>
+                    <p><strong>Created: </strong> {{ shoppinglist.created_date|timezone:"Europe/Paris"|date:'H:i d.m.y' }}</p>
+                    {% if shoppinglist.edit_date is not null %}
+                    <p><strong>Edited: </strong> {{ shoppinglist.edit_date|timezone:"Europe/Paris"|date:'H:i d.m.y' }}</p>
+                    {%  endif %}
+            </div>
+
+            <div id="userbuttons">
+                <h4 style="text-align:center">Shopping list operations</h4>
+                <hr style="border-top: 1px solid white;">
+                <a href="{%  url 'shoplists:listedit' pk=shoppinglist.pk %}">
+                <div class="stackedbutton"><button class="btn btn-danger" style="background-color: #f39c12"><i class="fa-solid fa-edit fa-1.5"></i> Edit list</button> </div> </a>
+                <br>
+                <a href="{%  url 'accounts:userdelete' pk=object.pk %}">
+               <div class="stackedbutton"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash fa-1.5"></i> Delete list</button> </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 userinfocol productsinfo" >
+            <ul class="list-group">
+            {%  for product in shoppinglist.products_as_list %}
+                <li class="list-group-item singleproduct" ><input class="form-check-input me-1 productcheckbox" type="checkbox"> {{ product }}</li>
+
+
+            {% endfor %}
+            </ul>
+        </div>
+
+
+
+    </div>
+
+
+{%  endblock %}

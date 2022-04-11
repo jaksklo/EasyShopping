@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{%  load bootstrap5 %}
+
+{% block content %}
+<div class="container">
+   <h1>Sign up</h1>
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary btn-lg">Sign up</button>
+    </form>
+</div>
+
+{%  endblock %}

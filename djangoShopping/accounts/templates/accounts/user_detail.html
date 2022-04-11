@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{%  load bootstrap5 %}
+{% load static %}
+{% load tz %}
+
+
+{% block content %}
+
+    <h1 id="test">Account details</h1>
+    <div class="row">
+        <div class="col-md-4 userinfocol">
+            <div id="userinfo">
+                    <h2>Hi, <span class="username">{{ user.username }}</span>!</h2>
+                <hr style="border-top: 1px solid white;">
+                    <p id="line"><strong>Sex: </strong> {{ object.get_sex_display }}</p>
+                    <p><strong>Origin: </strong> {{ object.origin }}</p>
+                    <p><strong>Email: </strong> {{ object.email }} </p>
+                    <p><strong>Last seen: </strong> {{ object.last_login|timezone:"Europe/Paris"  }} </p>
+            </div>
+
+            <div id="userbuttons">
+                <h4 style="text-align:center">Manage your account</h4>
+                <hr style="border-top: 1px solid white;">
+                <a href="{%  url 'accounts:useredit' pk=object.pk %}">
+                <div class="stackedbutton"><button class="btn btn-danger" style="background-color: #f39c12"><i class="fa-solid fa-edit fa-1.5"></i> Edit account</button> </div> </a>
+                <br>
+                <a href="{%  url 'accounts:userdelete' pk=object.pk %}">
+               <div class="stackedbutton"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash fa-1.5"></i> Delete account</button> </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 userinfocol" id="userphoto">
+            <img id="photo" src="{{ object.profile_pic.url }}">
+        </div>
+
+
+
+    </div>
+
+
+{%  endblock %}

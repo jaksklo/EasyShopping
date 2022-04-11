@@ -1,0 +1,66 @@
+
+ #userinfo{
+     background-color:#14213d;
+     margin-top:20px;
+     padding:20px;
+
+     height: auto;
+
+     width: 100%;
+     color:white;
+     border-bottom-left-radius:10px;
+     border-top-left-radius:10px
+ }
+
+  #userbuttons{
+     background-color:#14213d;
+     margin-top:30px;
+     padding:20px;
+  display: block;
+     height: auto;
+
+     width: 100%;
+     color:white;
+     border-bottom-left-radius:10px;
+     border-top-left-radius:10px
+ }
+
+  .stackedbutton{
+      text-align: center;
+  }
+  .stackedbutton button{
+      width: 200px;
+  }
+
+  #userphoto{
+
+     margin-top:20px;
+
+
+     color:white;
+
+      display: flex;
+    justify-content: left;
+    align-items: self-start;
+    overflow: hidden
+ }
+
+  #userphoto #photo{
+   object-fit: cover;
+     height:500px;
+  width:500px;
+      border-bottom-right-radius:10px;
+     border-top-right-radius:10px;
+  }
+
+  .username{
+      color:#f39c12;
+  }
+
+ #userphoto #photo_delete{
+   object-fit: cover;
+     height:200px;
+  width:200px;
+      border-bottom-right-radius:10px;
+     border-top-right-radius:10px;
+  }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{%  load bootstrap5 %}
+
+{% block content %}
+<div class="container">
+   <h1>Confirm shopping list removal</h1>
+<div class="row" style="height:200px">
+        <div class="col-md-8 userinfocol">
+            <div id="userinfo">
+                    <h5>Are you sure you want to delete <span class="username">{{ shoppinglist.title }}</span>?</h5>
+                <hr style="border-top: 1px solid white;">
+                <form method="POST">
+                    {%  csrf_token %}
+                <div class="stackedbutton"><button onclick="window.location='{% url 'shoplists:listsbyuser' username=user.username %}'" type="button" class="btn btn-primary"><i class="fa-solid fa-times fa-1.5"></i> Cancel</button> </div>
+                <br>
+                <div class="stackedbutton"><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash fa-1.5"></i> Delete</button> </div>
+                </form>
+            </div>
+
+
+        </div>
+        <div class="col-md-4 userinfocol" id="userphoto">
+
+        </div>
+
+    </div>
+</div>
+
+{%  endblock %}
